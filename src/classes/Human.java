@@ -4,64 +4,71 @@ public class Human {
 
     String name;
     ///////////
-    String[] objsNearHuman = new String[]{"Яблоко","Созревший кокос","Прочную палку","Ничего"};//0-3//len=4
+    String[] objsNearHuman = new String[]{"Яблоко", "Созревший кокос", "Прочную палку", "Ничего"};//0-3//len=4
+
     //////////////
-    Human(String name){
-        this.name=name;
+    Human(String name) {
+        this.name = name;
     }
-    public class Arm{
+
+    public class Arm {
         private int len;
         private String side;
         private boolean armIsBroken;
-        Arm(int len,String side,boolean armIsBroken){
-            this.len=len;
-            this.side=side;
-            this.armIsBroken=armIsBroken;
+
+        Arm(int len, String side, boolean armIsBroken) {
+            this.len = len;
+            this.side = side;
+            this.armIsBroken = armIsBroken;
         }
-        public void moveArmGrab(){
-            if(armIsBroken) {
+
+        public void moveArmGrab() {
+            if (armIsBroken) {
                 System.out.println(name + " попытался двинуть рукой ,\n" +
                         " но у него не получилось ,\n должно быть рука сломана?");
-            }
-            else if(len>34) {
+            } else if (len > 34) {
                 System.out.print(name + " попытался дотянутся рукой до куста ," +
-                            " и смог достать:"+
-                        objsNearHuman[((int)Math.random())%objsNearHuman.length]);
-                }
-            else System.out.println("Ничего не удалось");
+                        " и смог достать:" +
+                        objsNearHuman[(((int)(Math.random()*100)) % objsNearHuman.length)]);
+            } else System.out.println("Ничего не удалось");
         }
-        public void setIsBroken(boolean isBroken){
-            this.armIsBroken=isBroken;
+
+        public void setIsBroken(boolean isBroken) {
+            this.armIsBroken = isBroken;
         }
     }
+
     //////////////////
-    public class Leg{
+    public class Leg {
         private String side;
         private boolean legIsBroken;
-        Leg(String side , boolean legIsBroken){
-            this.side=side;
-            this.legIsBroken=legIsBroken;
+
+        Leg(String side, boolean legIsBroken) {
+            this.side = side;
+            this.legIsBroken = legIsBroken;
         }
 
-        public void setLegCondition(boolean condition){
-            this.legIsBroken=condition;
+        public void setLegCondition(boolean condition) {
+            this.legIsBroken = condition;
         }
 
-        public boolean getLegCondition(){
+        public boolean getLegCondition() {
             return this.legIsBroken;
         }
 
     }
+
     /////////////////
-    public void standOnLegs(Leg legR,Leg legL){
+    public void standOnLegs(Leg legR, Leg legL) {
         if (!(legR.getLegCondition() || legL.getLegCondition())) {
             System.out.println(name + " cмог встать на ноги и дойти убежища");
         }
     }
+
     //////////////////
-    public class Head{
-        public void shakeHead(){
-           System.out.println(name+" потряс головой и пришел в себя");
+    public class Head {
+        public void shakeHead() {
+            System.out.println(name + " потряс головой и пришел в себя");
         }
 
     }
